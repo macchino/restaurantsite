@@ -1,24 +1,35 @@
 {% load i18n %}
 {% load static %}
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="{{ language_code }}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Website Design From Scratch</title>
+    <title>{{ display_text }}</title>
     <link rel="stylesheet" href="{% static 'mysite/css/style.css' %}">
     {% block favicon %}
-<link rel="shortcut icon" href="{% static 'mysite/images/logo.png' %}" />
-{% endblock %}
+    <link rel="shortcut icon" href="{% static 'mysite/images/logo.png' %}" />
+    {% endblock %}
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" 
+    crossorigin="anonymous"> -->
 </head>
 <body>
     <header>
         <!-- /////////////////////// taransrate ////////////////////// -->
-        
+        <div class="dropdown">
+            <button class="dropbtn">Language</button>
+                <div class="dropdown-content">
+                    <a href="/en">English</a>
+                    <a href="/zh">中文</a>
+                    <a href="/es">Español</a>
+                    <a href="/pt">Portuguese</a>
+                    <a href="/">日本語</a>
+                </div>
+        </div>
         <!-- /////////////////////// taransrate ////////////////////// -->
 
-    <!-- <input type="submit" value="Go"> -->
 </form>
         <div>
         <a href="#" class="logo">焼き鳥佐田十郎</a>
@@ -37,16 +48,9 @@
     </header>
    <section class="banner" id="banner">
        <div class="content">
-           <h2>常に最善を・・・</h2>
-           <p>
-            吾輩わがはいは猫である。名前はまだ無い。
-            どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。
-            吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪どうあくな種族であったそうだ。
-            この書生というのは時々我々を捕つかまえて煮にて食うという話である。しかしその当時は何という考もなかったから別段
-            恐しいとも思わなかった。ただ彼の掌てのひらに載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。
-            掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始みはじめであろう。この時妙なものだと思った感じが今でも残っている。
-           </p>
-           <a href="#expert" class="btn">店舗情報</a>
+           <h2>{% trans "常に最善を・・・" %}</h2>
+           <p>{% trans "吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪どうあくな種族であったそうだ。この書生というのは時々我々を捕つかまえて煮にて食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌てのひらに載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始みはじめであろう。この時妙なものだと思った感じが今でも残っている。" %}</p>
+           <a href="#expert" class="btn">{% trans "店舗情報" %}</a>
        </div>
 
    </section>
@@ -54,11 +58,8 @@
    <section class="about" id="about">
     <div class="row">
         <div class="col50">
-            <h2 class="titleText"><span>ご</span>挨拶</h2>
-            <p>吾輩わがはいは猫である。名前はまだ無い。
-            どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。
-            吾輩はここで始めて人間というものを見た。<br><br> ただ彼の掌てのひらに載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。
-            掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始みはじめであろう。</p>
+            <h2 class="titleText">{% trans "ご挨拶" %}</h2>
+            <p>{% trans "吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。<br><br> ただ彼の掌てのひらに載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。 掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始みはじめであろう。" %}</p>
         </div>
         <div class="col50">
             <div class="imgBx">
@@ -69,9 +70,8 @@
    </section>
 <section class="menu" id="menu">
     <div class="title">
-            <h2 class="titleText"><span>お</span>店の特徴</h2>
-            <p>吾輩わがはいは猫である。名前はまだ無い。
-            どこで生れたかとんと見当けんとうがつかぬ。</p>
+            <h2 class="titleText">{% trans "お店の特徴" %}</h2>
+            <p>{% trans "吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ" %}</p>
     </div>
     <div class="content">
         <div class="box">
@@ -79,7 +79,7 @@
                 <img src="{% static 'mysite/images/menu1.png' %}">
             </div>
             <div class="text">
-                <h3>吾輩わがはいは猫である</h3>
+                <h3>{% trans "吾輩わがはいは猫である" %}</h3>
             </div>
         </div>
         <div class="box">
@@ -87,7 +87,7 @@
                 <img src="{% static 'mysite/images/menu2.png' %}">
             </div>
             <div class="text">
-                <h3>どこで生れたかとんと見当けんとうがつかぬ。</h3>
+                <h3>{% trans "どこで生れたかとんと見当けんとうがつかぬ。" %}</h3>
             </div>
         </div>
         <div class="box">
@@ -95,18 +95,18 @@
                 <img src="{% static 'mysite/images/menu3.png' %}">
             </div>
             <div class="text">
-                <h3>どこで生れたかとんと見当けんとうがつかぬ。</h3>
+                <h3>{% trans "どこで生れたかとんと見当けんとうがつかぬ。" %}</h3>
             </div>
         </div>
     </div>
     <div class="title">
-        <a href="#" class="btn">トップに戻る</a>
+        <a href="#" class="btn">{% trans "トップに戻る" %}</a>
     </div>
 </section>
 <section class="expert" id="expert">
     <div class="title">
-            <h2 class="titleText">責任を持って <span>お</span>待ちしております</h2>
-            <p>吾輩わがはいは猫である。名前はまだ無い。 どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。 </p>
+            <h2 class="titleText">{% trans "責任を持って待ちしております" %}</h2>
+            <p>{% trans "吾輩わがはいは猫である。名前はまだ無い。 どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。" %} </p>
     </div>
     <div class="content">
         <div class="box">
@@ -114,7 +114,7 @@
                 <img src="{% static 'mysite/images/azabumen.jpg' %}">
             </div>
             <div class="text">
-                <h3>麻布十番店　〇〇店長</h3>
+                <h3>{% trans "麻布十番店　〇〇店長" %}</h3>
             </div>
         </div>
         <div class="box">
@@ -122,7 +122,7 @@
                 <img src="{% static 'mysite/images/hiroomen.jpg' %}">
             </div>
             <div class="text">
-                <h3>広尾店　〇〇店長</h3>
+                <h3>{% trans "広尾店　〇〇店長" %}</h3>
             </div>
         </div>
         <div class="box">
@@ -130,16 +130,15 @@
                 <img src="{% static 'mysite/images/ebisumen.jpg' %}">
             </div>
             <div class="text">
-                <h3>恵比寿店　〇〇店長</h3>
+                <h3>{% trans "恵比寿店　〇〇店長" %}</h3>
             </div>
         </div>
     </div>
 </section>
 <section class="testimonials" id="testimonials">
     <div class="title white">
-            <h2 class="titleText">お <span>客</span>様の声</h2>
-            <p>吾輩わがはいは猫である。名前はまだ無い。
-            どこで生れたかとんと見当けんとうがつかぬ。</p>
+            <h2 class="titleText">{% trans "お客様の声" %}</h2>
+            <p>{% trans "吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ。" %}</p>
     </div>
     <div class="content">
         <div class="box">
@@ -147,11 +146,9 @@
                     <img src="{% static 'mysite/images/coment1.jpg' %}">
                 </div>
                 <div class="text">
-                    <p>スープの色は濃いめ、背脂も入っているのでかなり味が濃厚そうな印象ですラーメンの具はメンマにチャーシュー、青々としたネギが大盛りのネギが乗っかっています。ちょっと変わったところといえば、
-                        ニンニクチップがあるところで、味に同影響するのか楽しみですね。モクモクと立ち上っていく湯気がすごい。味噌ベースの濃厚そうなスープですが、そこまで味噌の香りが主張してこないのは
-                        にニンニクチップが入っているからなのか？でも、ニンニクのニオイも控えめなので次の日に仕事でも大丈夫かもしれないです。フワ～っと立ち上る湯気を見ているとグツグツと温まるのは間違いにないです。
+                    <p>{% trans "スープの色は濃いめ、背脂も入っているのでかなり味が濃厚そうな印象ですラーメンの具はメンマにチャーシュー、青々としたネギが大盛りのネギが乗っかっています。ちょっと変わったところといえば、ニンニクチップがあるところで、味に同影響するのか楽しみですね。モクモクと立ち上っていく湯気がすごい。味噌ベースの濃厚そうなスープですが、そこまで味噌の香りが主張してこないのはにニンニクチップが入っているからなのか？でも、ニンニクのニオイも控えめなので次の日に仕事でも大丈夫かもしれないです。フワ～っと立ち上る湯気を見ているとグツグツと温まるのは間違いにないです。" %}
                     </p>
-                    <h3>ナタリー・ポートマン</h3>
+                    <h3>{% trans "ナタリー・ポートマン" %}</h3>
                 </div>
         </div>
         <div class="box">
@@ -159,12 +156,8 @@
                     <img src="{% static 'mysite/images/coment2.jpg' %}">
                 </div>
                 <div class="text">
-                    <p>ピエールエルメは２種の味を組み合わせたマカロンが多く、バニラ＆サフランやフレッシュミント＆えんどう豆など珍しい組み合わせも数多くありました。
-                        このとき選んだ味は、チョコレート、バラ、パッション。マカロン生地は軽め・ガナッシュ（中身）ははっきりめの味なので、対比を感じます。
-                        また、マカロン食べると香りがふわっと広がるので、華やかな気分になるマカロンです＾＾
-                        特にバラ味のマカロンは、口に入れた瞬間からバラの香りが広がり口の中がバラ一面になり、イスパハンのヨーグルトを思い出す味でした～。
-                    </p>
-                    <h3>ピエール・瀧</h3>
+                    <p>{% trans "ピエールエルメは２種の味を組み合わせたマカロンが多く、バニラ＆サフランやフレッシュミント＆えんどう豆など珍しい組み合わせも数多くありました。このとき選んだ味は、チョコレート、バラ、パッション。マカロン生地は軽め・ガナッシュ（中身）ははっきりめの味なので、対比を感じます。 また、マカロン食べると香りがふわっと広がるので、華やかな気分になるマカロンです＾＾ 特にバラ味のマカロンは、口に入れた瞬間からバラの香りが広がり口の中がバラ一面になり、イスパハンのヨーグルトを思い出す味でした～。" %}</p>
+                    <h3>{% trans "ピエール・瀧" %}</h3>
                 </div>
         </div>
         <div class="box">
@@ -172,39 +165,33 @@
                     <img src="{% static 'mysite/images/coment3.jpg' %}">
                 </div>
                 <div class="text">
-                    <p>お肉が程よい歯ごたえ。噛むと肉汁が溢れ出してきて、旨味がすごい。
-                        そしてその旨味のプールの中を泳いだお肉が、すう〜っと喉の奥へ消えていきました。
-                        金メダルをあげたいと思います。肉には岩塩とコショウをまぶすだけで、ジワジワ焼く。
-                        金色の脂が汗のように滴り落ちてボッと炎をたて、たまらない香りがあたりに揺動する。
-                        使用しているのは岩手県内で生産された和牛。醤油ベースの和風ソースをかけて食べると、
-                        噛むほどに和牛独特の風味が増して、満足感を味わえる。
+                    <p>{% trans "お肉が程よい歯ごたえ。噛むと肉汁が溢れ出してきて、旨味がすごい。そしてその旨味のプールの中を泳いだお肉が、すう〜っと喉の奥へ消えていきました。金メダルをあげたいと思います。肉には岩塩とコショウをまぶすだけで、ジワジワ焼く。 金色の脂が汗のように滴り落ちてボッと炎をたて、たまらない香りがあたりに揺動する。使用しているのは岩手県内で生産された和牛。醤油ベースの和風ソースをかけて食べると 噛むほどに和牛独特の風味が増して、満足感を味わえる。" %}
 
 
                     </p>
-                    <h3>マイクル・ジャクソン</h3>
+                    <h3>{% trans "マイクル・ジャクソン" %}</h3>
                 </div>
         </div>
     </div>
 </section>
 <section class="contact" id="contact">
     <div class="title">
-            <h2 class="titleText"><span>コ</span>ンタクト</h2>
-            <p>吾輩わがはいは猫である。名前はまだ無い。
-            どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。</p>
+            <h2 class="titleText">{% trans "コンタクト" %}</h2>
+            <p>{% trans "吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。" %}</p>
     </div>
     <div class="contactForm">
-        <h3>メッセージを送信</h3>
+        <h3>{% trans "メッセージを送信" %}</h3>
         <div class="inputBx">
-            <input type="text" name="" placeholder="お名前">
+            <input type="text" name="" placeholder="{% trans 'お名前' %}">
         </div>
         <div class="inputBx">
             <input type="text" name="" placeholder="Email">
         </div>
         <div class="inputBx">
-            <textarea placeholder="メッセージ"></textarea>
+            <textarea placeholder="{% trans 'メッセージ' %}"></textarea>
         </div>
         <div class="inputBx">
-            <input type="submit" value="送信">
+            <input type="submit" value="{% trans '送信' %}">
         </div>
     </div>
     <div class="copyrightText">
