@@ -1,6 +1,12 @@
 from pathlib import Path
 import os
+import django_heroku
+import dj_database_url
+import environ
 from django.utils.translation import ugettext_lazy as _
+
+env = environ.Env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -8,14 +14,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+# Whether it is a heroku environment or not
+IS_ON_HEROKU = env.bool('ON_HEROKU', default=False)
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--zgh8!z5zt5swv9b@_1=*4gtu4@vgl07^)-v27b94$y3ci30_d'
+# If you are not in heroku environment, read the .env file
+if not HEROKU_ENV:
+    env.read_env('.env')
+
+# Change what to export
+DEBUG = env.get_value('DEBUG', cast = bool)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+if DEBUG:
+    ALLOWED_HOSTS = ['*']
+else:
+    ALLOWED_HOSTS = ['tensola-web.herokuapp.com']
+
+SECRET_KEY=env("SECRET_KEY")
+
+# SECURITY WARNING: don't run with debug turned on in production!
 
 ALLOWED_HOSTS = ['*']
 
@@ -71,10 +88,7 @@ WSGI_APPLICATION = 'setting.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': env.db(),
 }
 
 
@@ -112,7 +126,7 @@ LANGUAGES = [
 
 ]
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
@@ -136,3 +150,12 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+if not DEBUG:
+    import django_heroku
+    django_heroku.settings(locals())
