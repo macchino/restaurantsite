@@ -43,47 +43,99 @@ section {
 	font-size: 1em;
 	color: #fff;
 }
-.dropbtn {
-	background-color: #ff0157;
-	color: white;
-	padding: 16px;
-	font-size: 16px;
-	border: none;
-	cursor: pointer;
+/* ///////////////////////////////////////////////////////////////////////////////////////// */
+a,
+a:hover {
+	color: #33334d;
+	text-decoration: none;
+	font-weight: 600;
 }
 
-.dropdown {
+.links {
+	float: left;
+	margin-right: 30px;
+	position: relative;
+}
+
+.links li {
+	list-style: none;
+	position: relative;
+	margin: 10px;
+	display: inline-block;
+	
+}
+
+.links li>a {
 	position: relative;
 	display: inline-block;
-}
-
-.dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: #f9f9f9;
-	min-width: 160px;
-	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-	z-index: 1;
-}
-
-.dropdown-content a {
-	color: black;
-	padding: 12px 16px;
+	padding: 0 10px;
+	line-height: 30px;
+	height: 30px;
 	text-decoration: none;
+	color: #fff;
+	font-weight: 300;
+}
+
+.links li>a:hover {
+	background: #33334d;
+	border-radius: 2px;
+	color: #fff;
+}
+
+.links li>a[class^=trigger-] {
+	padding-right: 40px;
+	color: #fff;
+
+}
+
+
+.links li ul {
+	position: absolute;
+	left: 0;
+	margin: 0;
+	background: #333;
+	border-radius: 2px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+	display: none;
+}
+
+.links li ul>li {
+	clear: both;
+	list-style: none;
 	display: block;
+	padding: 0 10px;
+	margin: 0;
+	width: 100%;
 }
 
-.dropdown-content a:hover {
-	background-color: #f1f1f1
+.links li ul>li:hover {
+	background: #9494b8;
 }
 
-.dropdown:hover .dropdown-content {
+.links li ul>li:hover>a {
+	background: #9494b8;
+	color: #fff;
+}
+
+.links li:hover>.drop {
 	display: block;
+	animation: fadeInRight 0.3s ease;
+	-webkit-animation: fadeInRight 0.3s ease;
 }
 
-.dropdown:hover .dropbtn {
-	background-color: #bb0341;
+@keyframes fadeInRight {
+	0% {
+		opacity: 0;
+		transform: translate3d(100%, 0, 0);
+	}
+
+	100% {
+		opacity: 1;
+		transform: none;
+	}
 }
+/* ///////////////////////////////////////////////////////////////////////////////////////// */
+
 .btn {
 	font-size: 1em;
 	color: #fff;
@@ -113,9 +165,9 @@ section {
 	transition: 0.5s;
 }
 
-/* .btn1:hover {
+.btn1:hover {
 	letter-spacing: 4px;
-} */
+}
 header {
 	position: fixed;
 	top: 0;

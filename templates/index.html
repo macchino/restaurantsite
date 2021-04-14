@@ -17,37 +17,30 @@
 </head>
 <body>
     <header>
-        <!-- /////////////////////// taransrate ////////////////////// -->
-        
-
-        <!-- /////////////////////////////////////////////////// -->
-        
-        <div class="dropdown">
-        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-          <input name="next" type="hidden" value="{{ redirect_to }}">
-          <select name="language">
-              {% get_current_language as LANGUAGE_CODE %}
-              {% get_available_languages as LANGUAGES %}
-              {% get_language_info_list for LANGUAGES as languages %}
-              {% for language in languages %}
-                  <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                      {{ language.name_local }}
-                  </option>
-              {% endfor %}
-          </select>
-          <input type="submit" value="Go">
-      </form>
-      </div>
-        <!-- /////////////////////// taransrate ////////////////////// -->
-
+       
 </form>
         <div>
         <a href="/" class="logo">焼き鳥佐田十郎</a>
         </div>
         <div class="menuToggle" onclick="toggleMenu();"></div>
 
+        <!-- /////////////////////// taransrate ////////////////////// -->
+        <div>
+            <ul class="links">
+                <li class="dropdown"><a href="/" class="trigger-drop">Languages</a>
+                    <ul class="drop">
+                        <li><a href=https://tensola-web.herokuapp.com/en/#">English</a></li>
+                        <li><a href="https://tensola-web.herokuapp.com/zh-hans/">中文</a></li>
+                        <li><a href="https://tensola-web.herokuapp.com/es/">Español</a></li>
+                        <li><a href="https://tensola-web.herokuapp.com/pt/">Portugués</a></li>
+                        <li><a href="https://tensola-web.herokuapp.com/">日本語</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /////////////////////// taransrate ////////////////////// -->
+        
         <ul class="navigation">
-
             <li><a href="#banner" onclick="toggleMenu();">{% trans "ホーム" %}</a></li>
             <li><a href="#about" onclick="toggleMenu();">{% trans "ご挨拶" %}</a></li>
             <li><a href="#menu" onclick="toggleMenu();">{% trans "お店の特徴" %}</a></li>
