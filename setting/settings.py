@@ -1,15 +1,16 @@
+import os
+import environ
 import django_heroku
 from pathlib import Path
-import os
 import dj_database_url
-import environ
 from django.utils.translation import ugettext_lazy as _
 
-environ.Env.read_env()
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+env = environ.Env()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
