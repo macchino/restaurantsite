@@ -3,7 +3,7 @@ import environ
 import django_heroku
 from pathlib import Path
 import dj_database_url
-from django.utils.translation import ugettext_lazy as _
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -114,6 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
+from django.utils.translation import ugettext_lazy as _
 
 LANGUAGE_CODE = 'ja'
 
@@ -122,7 +123,7 @@ LANGUAGES = [
     ('ja', _('Japanese')),
     ('pt', _('Portuguese')),
     ('es', _('Spanish')),
-    ('zh', _('Chinese')),
+    ('zh-hans', _('Chinese')),
 
 
 ]
