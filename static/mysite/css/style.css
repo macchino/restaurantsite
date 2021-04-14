@@ -28,6 +28,7 @@ section {
 }
 
 .banner .content {
+	margin: 50px;
 	max-width: 900px;
 	text-align: center;
 }
@@ -139,7 +140,7 @@ header .logo {
 	width: 64px;
 	height: 64px;
 	font-size: 0;
-	background: url('../images/logo.png') left top/5px auto no-repeat;
+	background: url('../images/logo.png') left top/64px auto no-repeat;
 }
 
 header.sticky .logo {
