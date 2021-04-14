@@ -82,7 +82,7 @@ msgstr "Yo mismo soy un gato. Todavía no tengo un nombre. No tengo ni idea de d
 msgid ""
 "吾輩わがはいは猫である。名前はまだ無い。どこで生れたかとんと見当けんとうがつ"
 "かぬ"
-msgstr ""
+msgstr "Yo mismo soy un gato. Todavía no tengo un nombre. No tengo ni idea de dónde nació."
 
 msgid "吾輩わがはいは猫である"
 msgstr "Yo mismo soy un gato. Todavía no tengo un nombre. No tengo ni idea de dónde nació. "
