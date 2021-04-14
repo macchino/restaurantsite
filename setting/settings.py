@@ -1,6 +1,6 @@
+import django_heroku
 from pathlib import Path
 import os
-import django_heroku
 import dj_database_url
 import environ
 from django.utils.translation import ugettext_lazy as _
@@ -18,8 +18,8 @@ LOCALE_PATHS = (
 IS_ON_HEROKU = env.bool('ON_HEROKU', default=False)
 
 # If you are not in heroku environment, read the .env file
-if not HEROKU_ENV:
-    env.read_env('.env')
+if not IS_ON_HEROKU:
+    env.read_env(os.path.join(BASE_DIR,'.env'))
 
 # Change what to export
 DEBUG = env.get_value('DEBUG', cast = bool)
@@ -158,4 +158,5 @@ except ImportError:
 
 if not DEBUG:
     import django_heroku
-    django_heroku.settings(locals())
+
+django_heroku.settings(locals())
