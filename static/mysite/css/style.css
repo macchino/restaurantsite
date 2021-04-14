@@ -28,6 +28,8 @@ section {
 }
 
 .banner .content {
+	margin: 200px;
+	padding: 100px;
 	max-width: 900px;
 	text-align: center;
 }
@@ -136,10 +138,10 @@ header.sticky {
 
 header .logo {
 	display: block;
-	width: 64px;
-	height: 69px;
+	width: 20px;
+	height: 20px;
 	font-size: 0;
-	background: url('../images/logo.png') left top/64px auto no-repeat;
+	background: url('../images/logo.png') left top/5px auto no-repeat;
 }
 
 header.sticky .logo {
